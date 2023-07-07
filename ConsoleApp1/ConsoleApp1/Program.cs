@@ -11,7 +11,11 @@ delegate void PrintDelegate(string str);*/
 
 //------------------------Task 2------------------------------------
 
-/*ConsoleReadEvent isClicked = new ConsoleReadEvent("clicked");*/
+ConsoleReadEvent isClicked = new ConsoleReadEvent("asa");
+isClicked.OnButtonClicked += DisplayMessage;
+isClicked.isButtonClicked();
+void DisplayMessage(string message) => Console.WriteLine(message);
+
 
 //------------------------Task 3------------------------------------
 
@@ -33,7 +37,7 @@ delegate int Operation(int x, int y);*/
 
 //------------------------Task 4------------------------------------
 
-ComparisonDelegate comparing = (int x, int y) =>
+/*ComparisonDelegate comparing = (int x, int y) =>
 {
     if (x == y)
         return 0;
@@ -44,4 +48,11 @@ ComparisonDelegate comparing = (int x, int y) =>
 int comp = comparing(7, 9);
 Console.WriteLine(comp);
 
-delegate int ComparisonDelegate(int x, int y);
+delegate int ComparisonDelegate(int x, int y);*/
+
+//------------------------Task 5------------------------------------
+
+/*Balance b = new Balance("094831910",850);
+b.BalanceAdd("094831910", 1000);
+Console.WriteLine("Mutq arvec 1000 dram");
+*/
