@@ -11,10 +11,10 @@ delegate void PrintDelegate(string str);*/
 
 //------------------------Task 2------------------------------------
 
-ConsoleReadEvent isClicked = new ConsoleReadEvent("asa");
+/*ConsoleReadEvent isClicked = new ConsoleReadEvent("asa");
 isClicked.OnButtonClicked += DisplayMessage;
 isClicked.isButtonClicked();
-void DisplayMessage(string message) => Console.WriteLine(message);
+void DisplayMessage(string message) => Console.WriteLine(message);*/
 
 
 //------------------------Task 3------------------------------------
@@ -52,7 +52,7 @@ delegate int ComparisonDelegate(int x, int y);*/
 
 //------------------------Task 5------------------------------------
 
-/*Balance b = new Balance("094831910",850);
+Balance b = new Balance("094831910", 850);
+b.BalanceRefillEvent += print;  
 b.BalanceAdd("094831910", 1000);
-Console.WriteLine("Mutq arvec 1000 dram");
-*/
+void print(string str) => Console.WriteLine(str);

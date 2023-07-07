@@ -20,7 +20,7 @@ namespace ConsoleApp1
         {
             PhoneNumber = phoneNumber;
             RefilAmount += refilAmount;
-            BalanceRefillEvent?.Invoke($"Hashivy veralicqavorvec! {refilAmount} dramov");
+            BalanceRefillEvent($"{PhoneNumber} hashvin veralicqavorvec - {refilAmount} dram____Yntacik hashiv: {RefilAmount}");
         }
         
         public delegate void BalanceRefill(string message);
