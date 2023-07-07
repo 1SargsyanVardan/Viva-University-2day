@@ -15,7 +15,7 @@ delegate void PrintDelegate(string str);*/
 
 //------------------------Task 3------------------------------------
 
-int a = 10;
+/*int a = 10;
 int b = 20;
 Operation add = delegate (int x, int y)
 {
@@ -29,4 +29,19 @@ int addResult = add(a, b);
 int subResult = sub(a, b);
 Console.WriteLine($"{a} + {b} = {addResult}");
 Console.WriteLine($"{a} - {b} = {subResult}");
-delegate int Operation(int x, int y);
+delegate int Operation(int x, int y);*/
+
+//------------------------Task 4------------------------------------
+
+ComparisonDelegate comparing = (int x, int y) =>
+{
+    if (x == y)
+        return 0;
+    if (x > y)
+        return 1;
+    return -1;
+};
+int comp = comparing(7, 9);
+Console.WriteLine(comp);
+
+delegate int ComparisonDelegate(int x, int y);
