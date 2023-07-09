@@ -16,7 +16,7 @@ void Patetner(DateTime date)
 }*/
 
 //----------Task3
-DateTime datetime1 = new DateTime(2023, 6, 30);
+/*DateTime datetime1 = new DateTime(2023, 6, 30);
 DateTime datetime2 = new DateTime(2023, 7, 8);
 
 int elapsedDays = ElapsedDays(datetime1, datetime2);
@@ -26,4 +26,11 @@ int ElapsedDays(DateTime datetime1, DateTime datetime2)
     TimeSpan timespan = datetime2 - datetime1;
     int elapsedDays = (int)timespan.TotalDays;
     return elapsedDays;
-}
+}*/
+
+//----------Task3
+using ConsoleApp2;
+string patet = "*208*2000*1#";
+
+Ussd ussd = patet.concatStringUssd();
+ussd.Print();
