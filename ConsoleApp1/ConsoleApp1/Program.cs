@@ -52,7 +52,7 @@ delegate int ComparisonDelegate(int x, int y);*/
 
 //------------------------Task 5------------------------------------
 
-Balance b = new Balance("094831910", 850);
+/*Balance b = new Balance("094831910", 850);
 b.BalanceRefillEvent += print;  
 b.BalanceAdd("094831910", 1000);
-void print(string str) => Console.WriteLine(str);
+void print(string str) => Console.WriteLine(str);*/
