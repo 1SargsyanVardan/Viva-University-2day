@@ -28,9 +28,14 @@ int ElapsedDays(DateTime datetime1, DateTime datetime2)
     return elapsedDays;
 }*/
 
-//----------Task3
-using ConsoleApp2;
+//----------Task5
+/*using ConsoleApp2;
 string patet = "*208*2000*1#";
 
 Ussd ussd = patet.concatStringUssd();
-ussd.Print();
+ussd.Print();*/
+using ConsoleApp2;
+
+DateTime date = DateTime.Now;
+string str = date.Weekday("Russian");
+Console.WriteLine(str);
