@@ -77,30 +77,34 @@ else
         Console.WriteLine(e.Message);
     }
 }*/
-
-Subcriber user1 = new Subcriber("37494831910", 150, false, false, new DateTime(2023, 7, 25));
+MyService First = new MyService("First",1000,10,false);
+Subcriber user1 = new Subcriber("37494831910", 1500, false, false, new DateTime(2023, 7, 25));
 try
 {
     if (user1 == null)
         throw new Exception("User isn`t found!!");
     if (user1.PhoneNum.Length != 11 || int.TryParse(user1.PhoneNum, out _))
         throw new Exception("Inputing phone number isn`t valid phone number");
-    if (EndDay(user1.ExpirationDate) < 10)
+    if (EndDay(user1.ExpirationDate) < First.MinDutartionFromActiveService)
         throw new Exception("Time exception");
     if (user1.IsInRoaming)
-        throw new Exception("The service isn`t acvtive in roaming");
+        if(!First.HasInRouming)
+            throw new Exception("The service isn`t acvtive in roaming");
     if (user1.IsServiceActive)
         throw new Exception("This Service is active now");
-    if (user1.Balance < 1000)
+    if (user1.Balance < First.Price)
     {
         BalanceNotEnough();
         throw new Exception("The balance in the account is not enough to activate the Service");
     }
-    Console.WriteLine("The service successfully activeted");
+    First.Active(ref user1);
+    
 }
 catch (Exception ex)
 {
+    Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine(ex.Message);
+    Console.ForegroundColor = ConsoleColor.White;
 }
 
 void BalanceNotEnough()
@@ -114,6 +118,55 @@ int EndDay(DateTime date)
     return duration.Days;
 }
 
+public class MyService
+{
+    string name ;
+    double price;
+    int minDutartionFromActiveService ;
+    bool hasInRouming;
+    public MyService(string name,double price,int duration,bool hasInRoaming)
+    {
+        this.name = name;
+        this.price = price;
+        minDutartionFromActiveService = duration;
+        this.hasInRouming = hasInRoaming;
+    }
+    public void Active(ref Subcriber user)
+    {
+        try
+        {
+            if (user.Balance - price < 0)
+                throw new Exception("Hamakargi xndir");
+            user.myBalance(user.Balance - price);
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        user.myDate(DateTime.Now.AddDays(30));
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("The service successfully activeted");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine($"{Name} Patety hajoxutyamb aktivacvel e ev ayn aktiv e minchev {user.ExpirationDate}");
+        Console.WriteLine($"Dzer yntacik hashivy kazmum e {user.Balance} dr.");
+    }
+    public string Name
+    {
+        get { return name; }
+    }
+    public double Price
+    {
+        get { return price; }
+    }
+    public int MinDutartionFromActiveService
+    {
+        get { return minDutartionFromActiveService;}
+    }
+    public bool HasInRouming
+    {
+        get { return hasInRouming; }
+    }
+}
 public class Subcriber
 {
     string? phoneNum;
@@ -129,7 +182,14 @@ public class Subcriber
         this.isServiceActive = isServiceActive;
         this.expirationDate = expirationDate;
     }
-
+    public void myBalance(double balance)
+    {
+        this.balance = balance;
+    }
+    public void myDate(DateTime date)
+    {
+        expirationDate = date;
+    }
     public string PhoneNum { get { return phoneNum; } }
     public double Balance { get { return balance; } }
     public bool IsServiceActive { get { return isServiceActive; } }
