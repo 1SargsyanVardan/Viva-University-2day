@@ -16,10 +16,20 @@ void Patetner(DateTime date)
 }*/
 
 
+
+//DateTime-ri het kapvac harecerna,,, depq vor / .er yndunum ... et dzelu hamar nerqevinov ktvum enq hamakargchi time-ric
+/*sing System.Globalization;
+
+DateTime date = DateTime.Now;
+CultureInfo cultureInfo = CultureInfo.InvariantCulture;
+Console.WriteLine(date.ToString("dd/MM/yyyy HH:mm:ss.fff",cultureInfo));*/
+
+
+
 //----------Task2
-DateTime dt = DateTime.Now;
+/*DateTime dt = DateTime.Now;
 DateTime newDateTime = GetLastDayOfMonth(dt);
-Console.WriteLine( stringFormat(newDateTime, 'm')); 
+Console.WriteLine( stringFormat(newDateTime, 'd')); 
 
 DateTime GetLastDayOfMonth(DateTime currentDate)
 {
@@ -92,7 +102,7 @@ string stringFormat(DateTime dt,char str)
         return retStr + "\nPatetneri mnacordy stugelu hamar ugharkeq *209#.";
     }
     return "Ayl formatov anhnar e katarel cucadrum!";
-}
+}*/
 //----------Task3
 /*DateTime datetime1 = new DateTime(2023, 6, 30);
 DateTime datetime2 = new DateTime(2023, 7, 8);
@@ -115,9 +125,9 @@ string str = date.Weekday("Russian");
 Console.WriteLine(str);*/
 
 //----------Task5
-/*using ConsoleApp2;
+using ConsoleApp2;
 string patet = "*208*2000*1#";
 
 Ussd ussd = patet.concatStringUssd();
-ussd.Print();*/
+ussd.Print();
 

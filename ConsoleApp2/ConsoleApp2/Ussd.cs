@@ -31,8 +31,11 @@ namespace ConsoleApp2
     {
         static public Ussd concatStringUssd(this string str)
         {
-            //*208*2000*1#
-           
+            //*208*2000*1#//popoxeliii
+             
+            /*var stringArray = str.Split('*');
+            foreach(string str2 in stringArray)
+                Console.WriteLine(str2);*/
             Ussd ussd;
             if(str[0]=='*' && str[4]=='*' && str[9]=='*' && str[str.Length-1]=='#')
             {
