@@ -77,17 +77,17 @@ else
         Console.WriteLine(e.Message);
     }
 }*/
-MyService First = new MyService("First",1000,10,false);
+/*MyService First = new MyService("First", 1000, 10, false);
 Subcriber user1 = new Subcriber("37494831910", 1500, false, false, new DateTime(2023, 7, 25));
 First.Active(ref user1);
 
 public class MyService
 {
-    string name ;
+    string name;
     double price;
-    int minDutartionFromActiveService ;
+    int minDutartionFromActiveService;
     bool hasInRouming;
-    public MyService(string name,double price,int duration,bool hasInRoaming)
+    public MyService(string name, double price, int duration, bool hasInRoaming)
     {
         this.name = name;
         this.price = price;
@@ -118,7 +118,7 @@ public class MyService
                 throw new Exception("Hamakargi xndir");
             user.myBalance(user.Balance - price);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
@@ -148,7 +148,7 @@ public class MyService
     }
     public int MinDutartionFromActiveService
     {
-        get { return minDutartionFromActiveService;}
+        get { return minDutartionFromActiveService; }
     }
     public bool HasInRouming
     {
@@ -162,7 +162,7 @@ public class Subcriber
     bool isInRoaming;
     bool isServiceActive;
     DateTime expirationDate;
-    public Subcriber(string phoneNum,double balance,bool isInRoaming,bool isServiceActive,DateTime expirationDate)
+    public Subcriber(string phoneNum, double balance, bool isInRoaming, bool isServiceActive, DateTime expirationDate)
     {
         this.phoneNum = phoneNum;
         this.balance = balance;
@@ -183,4 +183,39 @@ public class Subcriber
     public bool IsServiceActive { get { return isServiceActive; } }
     public bool IsInRoaming { get { return isInRoaming; } }
     public DateTime ExpirationDate { get { return expirationDate; } }
-}
+}*/
+
+//--------------------------TASK*--------------------
+
+
+/*
+ public FilteredUsers(int count)
+        {
+            subcribers.Add(new Subcriber("37494831910", 1500, true, false, new DateTime(2023, 7, 25), First));
+            subcribers.Add(new Subcriber("37494831910", 100, true, false, new DateTime(2023, 7, 25), First));
+            subcribers.Add(new Subcriber("37494831910", 500, false, false, new DateTime(2023, 7, 25), First));
+            subcribers.Add(new Subcriber("37494831910", 1500, true, false, new DateTime(2023, 7, 25), First));
+            subcribers.Add(new Subcriber("37494831910", 1500, false, false, new DateTime(2023, 7, 25), First));
+            subcribers.Add(new Subcriber("37494831910", 1500, false, true, new DateTime(2023, 7, 25), First));
+            subcribers.Add(new Subcriber("37494831910", 1500, false, false, new DateTime(2023, 7, 25), First));
+
+            for (int i = 0; i < count; i++)
+            {
+                subcribers.Add(new Subcriber("37494831910", 1500, false, false, new DateTime(2023, 7, 25), First));
+            }
+        }*/
+
+using Task_Day4;
+
+MyService First = new MyService("First", 1000, 10, false);
+List<Subcriber> subcribers = new List<Subcriber>();
+    subcribers.Add(new Subcriber("37495452210", 1500, true, false, new DateTime(2023, 7, 25), First));
+    subcribers.Add(new Subcriber("37495623210", 100, true, false, new DateTime(2023, 7, 25), First));
+    subcribers.Add(new Subcriber("37498566894", 500, false, false, new DateTime(2023, 7, 25), First));
+    subcribers.Add(new Subcriber("37497777777", 1500, true, false, new DateTime(2023, 7, 25), First));
+    subcribers.Add(new Subcriber("37494885210", 1500, false, false, new DateTime(2023, 7, 25), First));
+    subcribers.Add(new Subcriber("37477777710", 1500, false, true, new DateTime(2023, 7, 25), First));
+    subcribers.Add(new Subcriber("37494451250", 1500, false, false, new DateTime(2023, 7, 25), First));
+FilteredUsers filteredUsers = new FilteredUsers(subcribers,First);
+filteredUsers.FilteringCheck();
+filteredUsers.Activation();
