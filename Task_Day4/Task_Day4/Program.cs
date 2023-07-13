@@ -217,5 +217,8 @@ List<Subcriber> subcribers = new List<Subcriber>();
     subcribers.Add(new Subcriber("37477777710", 1500, false, true, new DateTime(2023, 7, 25), First));
     subcribers.Add(new Subcriber("37494451250", 1500, false, false, new DateTime(2023, 7, 25), First));
 FilteredUsers filteredUsers = new FilteredUsers(subcribers,First);
-filteredUsers.FilteringCheck();
-filteredUsers.Activation();
+/*filteredUsers.FilteringCheck();
+filteredUsers.Activation();*/
+
+filteredUsers.FilteringCheckByTasks();
+filteredUsers.ActivationByTask();

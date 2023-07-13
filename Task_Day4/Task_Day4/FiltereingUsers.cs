@@ -17,6 +17,67 @@ namespace Task_Day4
             this.subcribers = subcribers;
             this.service = service;
         }
+        public void FilteringCheckByTasks()
+        {
+            List<Task> tasks = new List<Task>();
+            foreach (Subcriber subcriber in subcribers)
+            {
+                Task task =  Task.Run(() =>
+                {
+                    try
+                    {
+                        subcriber.Check();
+                        lock (locker)
+                        {
+                            filteredSubcribers.Add(subcriber);
+                        }
+                    }
+                    catch (DateTimeException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (IsInRoamingException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (IsServiceActiveException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (BalanceException ex)
+                    {
+
+                        Console.WriteLine(ex.Message);
+                    }
+                });
+                tasks.Add(task);
+                Task.WaitAll(tasks.ToArray());
+            }
+        }
+        public void ActivationByTask()
+        {
+            List<Task> tasks = new List<Task>();
+            foreach (Subcriber sub in filteredSubcribers)
+            {
+                tasks.Add(Task.Run(() =>
+                {
+                    lock (locker)
+                    {
+                        sub.IsServiceActive = true;
+                        sub.Balance = sub.Balance - service.Price;
+                        sub.expirationDate = DateTime.Now.AddDays(30);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("The service successfully activeted");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($"{service.Name} Patety hajoxutyamb aktivacvel e ev ayn aktiv e minchev {sub.expirationDate}");
+                        Console.WriteLine($"Dzer yntacik hashivy kazmum e {sub.Balance} dr.");
+                    }
+                }));
+
+                Task.WaitAll(tasks.ToArray());
+
+            }
+        }
         public void FilteringCheck()
         {
             List<Thread> threads = new List<Thread>();
@@ -34,28 +95,20 @@ namespace Task_Day4
                     }
                     catch (DateTimeException ex)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine(ex.Message);
-                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     catch (IsInRoamingException ex)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine(ex.Message);
-                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     catch (IsServiceActiveException ex)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine(ex.Message);
-                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     catch (BalanceException ex)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine(ex.Message);
-                        Console.ForegroundColor = ConsoleColor.White;
                     }
                 });
                 threads.Add(thread);
