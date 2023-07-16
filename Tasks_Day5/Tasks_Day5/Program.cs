@@ -44,7 +44,7 @@ catch (FileNotFoundException ex)
 Console.WriteLine("All lines in two files = " + allLines);*/
 
 //--------------------------------------------Task 2--------------------------
-
+//kargavorvac amboxj directoriay hamar
 using System;
 using System.Drawing;
 using System.IO;
@@ -54,7 +54,7 @@ using System.Drawing.Imaging;
 string directory = @"C:\Users\User\OneDrive\Рабочий стол\Viva-University-2day\Tasks_Day5";
 string[] imageInDirectory = Directory.GetFiles(directory, "*jpeg");
 
-myFunc(imageInDirectory);
+//myFunc(imageInDirectory);
 //var stringPattern = new[] { "*jpeg", "*png", "*svg", "*WebP" };
 
 
@@ -98,12 +98,17 @@ Task Func(string[] imageInDirectory)
         }
         for (int i = 0; i < bitmaps.Length; i++)
         {
-            bitmaps[i] = new Bitmap(bitmaps[i],new Size(260,bitmaps[i].Height));
+            bitmaps[i] = new Bitmap(bitmaps[i], new Size(260, bitmaps[i].Height));
             bitmaps[i] = SetGrayscale(bitmaps[i]);
-            bitmaps[i].Save(@"C:\Users\User\OneDrive\Рабочий стол\Viva-University\Viva_university_tasks\newImage.jpeg", ImageFormat.Jpeg);
+            bitmaps[i].Save(@"C:\Users\User\OneDrive\Рабочий стол\Viva-University\Viva_university_tasks\newImage" + $"{i}" + ".jpeg", ImageFormat.Jpeg);
+
         }
     });
 }
+/*Image image = Image.FromStream(File.OpenRead(@"C:\Users\User\OneDrive\Рабочий стол\Viva-University-2day\Tasks_Day5\Viva.jpeg"));
+Console.WriteLine(image.Height);
+Console.WriteLine(image.PixelFormat);*/
+//ASYNC AWAIT
 /*class MyClass
 {
     public async static void SomeMethod()
@@ -118,7 +123,6 @@ Task Func(string[] imageInDirectory)
         Console.WriteLine("\n10 Seconds wait Completed\n");
     }
 }*/
-/*Image image = Image.FromStream(File.OpenRead(@"C:\Users\User\OneDrive\Рабочий стол\Viva-University-2day\Tasks_Day5\Viva.jpeg"));
-Console.WriteLine(image.Height);
-Console.WriteLine(image.PixelFormat);*/
 
+
+//--------------------------------------------Task 3-------------------------------------
